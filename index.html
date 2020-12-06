@@ -271,12 +271,16 @@
 					return text;
 				}
 			}
-			// fetch("localization/English.txt").then(response => response.text()).then(english_data => {
-			// 	fetch("localization/Korean.txt").then(response => response.text()).then(korean_data => {
-			// 		const english_lines = english_data.trim().replace(/^\d+\s/gm, "").split(/\r?\n/g);
-			// 		const korean_lines = korean_data.trim().replace(/^\d+\s/gm, "").split(/\r?\n/g);
-			// 		for (let i = 0; i < korean_lines.length; i++) {
-			// 			localizations[english_lines[i]] = korean_lines[i];
+			// This is used to generate the JSON data, but can't be used directly because it's async (the UI is rendered before it loads the text files.)
+			// @TODO: handle multiline strings (currently I'm assuming each line corresponds, rather than each numbered string; I should use parse and use the string IDs instead of just deleting them with regexp)
+			// Or/but first try to find another program to get more strings; many are missing, and a different program may have a different output format.
+			// The strings so far have been obtained with ResourcesExtract.
+			// fetch("localization/strings-en.txt").then(response => response.text()).then(en_data => {
+			// 	fetch("localization/strings-ko.txt").then(response => response.text()).then(ko_data => {
+			// 		const en_lines = en_data.trim().replace(/^\d+\s/gm, "").split(/\r?\n/g);
+			// 		const ko_lines = ko_data.trim().replace(/^\d+\s/gm, "").split(/\r?\n/g);
+			// 		for (let i = 0; i < ko_lines.length; i++) {
+			// 			localizations[en_lines[i]] = ko_lines[i];
 			// 		}
 			// 	});
 			// });
